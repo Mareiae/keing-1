@@ -1,3 +1,4 @@
-/example/.idea
+/example/.idea/
 /example/*.exe
 /example/example
+.gitignore
