@@ -43,6 +43,7 @@ func (rt *RouterGroup) createContext(w http.ResponseWriter, r *http.Request, par
 		Params:   params,
 		handlers: handlers,
 		index:    -1,
+		engine:   rt.engine,
 	}
 }
 func (rt *RouterGroup) combineHandlers(handlers []HandlerFunc) []HandlerFunc {

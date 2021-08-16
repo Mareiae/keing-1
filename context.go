@@ -19,6 +19,7 @@ type Context struct {
 	Errors   []ErrorMsg
 	index    int8
 	code     int
+	engine   *Engine
 }
 
 func (c *Context) Next() {
@@ -93,6 +94,21 @@ func (c *Context) XML(code int, obj interface{}) {
 	encoder := xml.NewEncoder(c.Writer)
 	if err := encoder.Encode(obj); err != nil {
 		c.Error(err, obj)
+		http.Error(c.Writer, err.Error(), 500)
+		c.code = 500
+	}
+}
+
+func (c *Context) HTML(code int, name string, data interface{}) {
+	c.Writer.Header().Set("Content-Type", "text/html")
+	if code >= 0 {
+		c.Writer.WriteHeader(code)
+	}
+	if err := c.engine.HtmlTemplates.ExecuteTemplate(c.Writer, name, data); err != nil {
+		c.Error(err, map[string]interface{}{
+			"name": name,
+			"data": data,
+		})
 		http.Error(c.Writer, err.Error(), 500)
 		c.code = 500
 	}
