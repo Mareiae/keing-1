@@ -1,6 +1,6 @@
 package main
 
-import keing "github.com/hxoreyer/keing"
+import "github.com/hxoreyer/keing"
 
 func main() {
 	k := keing.Init()
