@@ -2,7 +2,4 @@ module example
 
 go 1.16
 
-require (
-	github.com/gin-gonic/gin v1.7.4
-	github.com/hxoreyer/keing v0.1.0
-)
+require github.com/hxoreyer/keing v0.1.1
