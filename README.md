@@ -11,7 +11,7 @@
 
 ### 🏠 [Homepage](https://github.com/hxoreyer/keing)
 
-### ✨ [Demo](https://github.com/hxoreyer/keing/example)
+### ✨ [Demo](https://github.com/hXoreyer/keing/tree/master/example)
 
 ## Author
 
