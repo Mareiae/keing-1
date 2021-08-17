@@ -1,6 +1,6 @@
-<h1 align="center">Welcome to keing 👋</h1>
+<h1 align="center">Keing Web Framework</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.1-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.1.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://pkg.go.dev/github.com/hxoreyer/keing@v0.1.1" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -8,18 +8,17 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
-
 ### 🏠 [Homepage](https://github.com/hxoreyer/keing)
 
-### ✨ [Demo](https://github.com/hXoreyer/keing/tree/master/example)
+### ✨ [Example](https://github.com/hXoreyer/keing/tree/master/example)
 
-## Author
+## 👨‍🎓 Author
 
 👤 **hxoreyer**
 
 * Github: [@hxoreyer](https://github.com/hxoreyer)
 
-## Show your support
+## 🎁 Show your support
 
 Give a ⭐️ if this project helped you!
 
