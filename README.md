@@ -42,7 +42,7 @@ go get -u github.com/hxoreyer/keing
 import "github.com/hxoreyer/keing"
 ```
 
-### 列子💯   
+### 例子💯   
 创建最简单的HTTP端点   
 ```golang   
 pakage main
