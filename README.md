@@ -29,20 +29,20 @@ Copyright © 2021 [hxoreyer](https://github.com/hxoreyer).<br />
 This project is [MIT](https://github.com/hXoreyer/keing/LICENSE) licensed.   
 
 ---
-## 使用
+## 使用✔
 当然，提前得先要有go和git  
 
 下载  
 ```
 go get -u github.com/hxoreyer/keing
-```  
+```
 
 在你的go代码里import
 ```
 import "github.com/hxoreyer/keing"
-```  
+```
 
-### 列子   
+### 列子💯   
 创建最简单的HTTP端点   
 ```golang   
 pakage main
@@ -97,7 +97,7 @@ func main(){
 	k.Run(":8080")
 }
 ```
-### 无默认中间件初始化
+### 无默认中间件初始化🚫
 使用
 ```golang   
 k := keig.New()
@@ -106,7 +106,8 @@ k := keig.New()
 ```golang
 k := keing.Init()
 ```
-### 中间件使用
+### 中间件使用🗝
 ```golang   
 k.Use(Logger())
 ```
+
