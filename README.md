@@ -71,7 +71,9 @@ import "github.com/hxoreyer/keing"
 func main(){
 	k := keing.Init()
 	k.GET("/username/:name",func(c *keing.Context){
-		c.String(200,"hello " + c.Name("name"))
+        c.JSON(200, keing.K{
+            "msg": "hello " + c.Name("name")
+        })
 	})
 	
 	k.Run(":8080")

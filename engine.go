@@ -8,14 +8,16 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
+//Engine 路由核心
 type Engine struct {
 	*RouterGroup
 	router        *httprouter.Router
 	path          *Paths
 	index         int
-	HtmlTemplates *template.Template
+	HTMLTemplates *template.Template
 }
 
+//Init 路由初始化(带默认中间件)
 func Init() *Engine {
 	engine := New()
 	engine.Use(Logger())
@@ -25,6 +27,7 @@ func Init() *Engine {
 	return engine
 }
 
+//New 路由初始化(无默认中间件)
 func New() *Engine {
 	engine := &Engine{}
 	engine.RouterGroup = &RouterGroup{nil, "", nil, engine}
@@ -33,11 +36,12 @@ func New() *Engine {
 	return engine
 }
 
-//使用ServeHTTP使路由实现 http.Handler的接口
+//ServeHTTP 使用ServeHTTP使路由实现 http.Handler的接口
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	engine.router.ServeHTTP(w, req)
 }
 
+//Run 通过addr运行
 func (engine *Engine) Run(addr string) {
 	engine.path.ShowAllPathString()
 	fmt.Printf("[Keing] Listening and serving HTTP on %s\n", addr)
@@ -47,6 +51,7 @@ func (engine *Engine) Run(addr string) {
 	}
 }
 
-func (engine *Engine) SetHtmlTemplates(pattren string) {
-	engine.HtmlTemplates = template.Must(template.ParseGlob(pattren))
+//SetHTMLTemplates 确保HTML模板无错误，再将其赋予变量中
+func (engine *Engine) SetHTMLTemplates(pattren string) {
+	engine.HTMLTemplates = template.Must(template.ParseGlob(pattren))
 }
