@@ -3,6 +3,8 @@ package keing
 import (
 	"encoding/json"
 	"encoding/xml"
+	"errors"
+	"log"
 	"math"
 	"net/http"
 
@@ -18,12 +20,13 @@ type Context struct {
 	Params   httprouter.Params
 	handlers []HandlerFunc
 	Errors   []ErrorMsg
+	Keys     map[string]interface{}
 	index    int8
 	code     int
 	engine   *Engine
 }
 
-//Next 运行后面的handlers
+//Next 运行后面的handlers(中间件可使用)
 func (c *Context) Next() {
 	c.index++
 	s := int8(len(c.handlers))
@@ -171,4 +174,33 @@ func (c *Context) QueryString(key string) string {
 //c.Name("name")将获取keing
 func (c *Context) Name(key string) string {
 	return c.Params.ByName(key)
+}
+
+//Set 为上下文添加一个键值对
+//可用Get获取键值
+func (c *Context) Set(key string, item interface{}) {
+	if c.Keys == nil {
+		c.Keys = make(map[string]interface{})
+	}
+	c.Keys[key] = item
+}
+
+//Get 从上下文中读取键值对
+func (c *Context) Get(key string) (interface{}, error) {
+	if c.Keys != nil {
+		item, ok := c.Keys[key]
+		if ok {
+			return item, nil
+		}
+	}
+	return nil, errors.New("Key does not exist")
+}
+
+//MustGet 返回给定键的值，如果值不存在，则发生panic
+func (c *Context) MustGet(key string) interface{} {
+	item, err := c.Get(key)
+	if err != nil || item == nil {
+		log.Panicf("Key %s does not exist", key)
+	}
+	return item
 }
